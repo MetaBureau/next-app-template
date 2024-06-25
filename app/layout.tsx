@@ -3,6 +3,7 @@ import React from 'react';
 import { MantineProvider, ColorSchemeScript, Container } from '@mantine/core';
 import { theme } from '../theme';
 // import DoubleHeader from '../components/DoubleHeader/DoubleHeader';
+
 import FooterLinks from '../components/FooterLinks/FooterLinks';
 
 export const metadata = {
@@ -24,7 +25,7 @@ export default function RootLayout({ children }: { children: any }) {
       <body>
         <MantineProvider theme={theme}>
         {/* <DoubleHeader /> */}
-        <Container>
+        <Container size="responsive">
           {children}
         </Container>
           <FooterLinks />

@@ -7,6 +7,7 @@ import CardsCarousel from '../components/CardsCarousel/CardsCarousel';
 import { TableReviews } from '../components/TableReviews/TableReviews';
 import { HeaderSimple } from '@/components/HeaderSimple/HeaderSimple';
 import { HeaderMegaMenu } from '@/components/HeaderMegaMenu/HeaderMegaMenu';
+import { HeroImageRight } from '@/components/HeroImageRight/HeroImageRight';
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
 <HeaderMegaMenu />
 <HeaderSimple />
       <Welcome />
+      <HeroImageRight />
       <CardsCarousel />
       <ColorSchemeToggle />
       <ImageActionBanner />
