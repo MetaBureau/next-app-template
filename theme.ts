@@ -2,7 +2,7 @@
 
 import cx from 'clsx';
 import { createTheme, Container } from '@mantine/core';
-import classes from './App/Layout.module.css';
+import classes from './app/Layout.module.css';
 
 export const theme = createTheme({
   /* Put your mantine theme override here */
