@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import ReactMapGl, { Marker } from 'react-map-gl';
 import { useState, useEffect } from 'react';
 import PointerIcon from '../../assets/pointer.svg';
@@ -7,13 +6,17 @@ import classes from './Map.module.css';
 
 const TOKEN = 'pk.eyJ1IjoibWV0YWJ1cmVhdSIsImEiOiJjbHY3ZzdjbWwwOWVtMmtueDFrdTJkc2RyIn0.cxMBN9cYT8gWMD8H37adTA';
 
-Map.propTypes = {
-  longitude: PropTypes.number.isRequired,
-  latitude: PropTypes.number.isRequired,
-  updateCoordinates: PropTypes.func.isRequired,
-};
+interface MapProps {
+  longitude: number
+  latitude: number
+  updateCoordinates: (...args: unknown[]) => unknown
+}
 
-function Map({ longitude, latitude, updateCoordinates }) {
+function Map({
+  longitude,
+  latitude,
+  updateCoordinates
+}: MapProps) {
   const [viewport, setViewport] = useState({
     latitude,
     longitude,
@@ -66,3 +69,4 @@ function Map({ longitude, latitude, updateCoordinates }) {
 }
 
 export default Map;
+    
