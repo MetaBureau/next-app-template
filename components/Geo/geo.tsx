@@ -15,7 +15,7 @@ function Geo() {
     longitude: '',
   });
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (address.streetAndNumber) {
