@@ -1,18 +1,15 @@
+import PropTypes from 'prop-types';
 import AutoCompleteInput from './AutoCompleteInput';
 
 import classes from './AddresForm.module.css';
 
-interface AddressFormProps {
-  address: object
-  onSubmit: (...args: unknown[]) => unknown
-  setAddress: (...args: unknown[]) => unknown
-}
+AddressForm.propTypes = {
+  address: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  setAddress: PropTypes.func.isRequired,
+};
 
-export default function AddressForm({
-  address,
-  onSubmit,
-  setAddress
-}: AddressFormProps) {
+export default function AddressForm({ address, onSubmit, setAddress }) {
   const handleManualInputChange = (event, stateProperty) => {
     const newAddress = { ...address };
     newAddress[stateProperty] = event.target.value;
