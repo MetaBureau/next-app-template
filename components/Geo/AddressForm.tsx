@@ -1,24 +1,19 @@
-import PropTypes from 'prop-types';
 import AutoCompleteInput from './AutoCompleteInput';
 
 import classes from './AddresForm.module.css';
 
 interface AddressFormProps {
-  address: {
-    streetAndNumber: string;
-    place: string;
-    region: string;
-    postcode: string;
-    country: string;
-    latitude?: string;
-    longitude?: string;
-  };
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  setAddress: (newAddress: typeof address) => void;
+  address: object
+  onSubmit: (...args: unknown[]) => unknown
+  setAddress: (...args: unknown[]) => unknown
 }
 
-export default function AddressForm({ address, onSubmit, setAddress }: AddressFormProps) {
-  const handleManualInputChange = (event: React.ChangeEvent<HTMLInputElement>, stateProperty: keyof typeof address) => {
+export default function AddressForm({
+  address,
+  onSubmit,
+  setAddress
+}: AddressFormProps) {
+  const handleManualInputChange = (event, stateProperty) => {
     const newAddress = { ...address };
     newAddress[stateProperty] = event.target.value;
 
@@ -95,4 +90,3 @@ export default function AddressForm({ address, onSubmit, setAddress }: AddressFo
     </form>
   );
 }
-
