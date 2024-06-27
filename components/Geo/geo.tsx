@@ -3,7 +3,7 @@ import AddressForm from './AddressForm';
 import Map from './Map';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-export default function Geo() {
+export function Geo() {
   const [address, setAddress] = useState({
     streetAndNumber: '',
     place: '',
