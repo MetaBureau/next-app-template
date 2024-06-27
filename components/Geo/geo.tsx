@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import AddressForm from './AddressForm';
 import Map from './Map';
@@ -15,7 +14,7 @@ function Geo() {
     longitude: '',
   });
 
-  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
 
     if (address.streetAndNumber) {

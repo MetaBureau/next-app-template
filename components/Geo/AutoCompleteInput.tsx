@@ -1,20 +1,25 @@
-
+import './AutoCompleteInput.module.css';
+// import PropTypes from 'prop-types';
 import { useState } from 'react';
 import getPlaces from '../../API/getPlaces';
 
-import classes from './AutoCompleteInput.module.css';
+// AutoCompleteInput.propTypes = {
+//   handleManualInputChange: PropTypes.func.isRequired,
+//   setAddress: PropTypes.func.isRequired,
+//   streetAndNumber: PropTypes.string.isRequired,
+// };
 
-interface AutoCompleteInputProps {
-  handleManualInputChange: (...args: unknown[]) => unknown
-  setAddress: (...args: unknown[]) => unknown
-  streetAndNumber: string
+interface AddressForm {
+  handleManualInputChange: string;
+  setAddress: string;
+  streetAndNumber: string;
 }
 
 export default function AutoCompleteInput({
   handleManualInputChange,
   setAddress,
-  streetAndNumber
-}: AutoCompleteInputProps) {
+  streetAndNumber,
+}) {
   const [suggestions, setSuggestions] = useState([]);
 
   const handleChange = (event) => {
