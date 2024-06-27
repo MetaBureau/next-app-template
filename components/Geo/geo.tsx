@@ -27,7 +27,7 @@ export default function Geo() {
   };
 
   return (
-    <div className="App">
+    <div className="Geo">
       <AddressForm
         onSubmit={handleFormSubmit}
         address={address}
