@@ -1,55 +1,63 @@
 import './AutoCompleteInput.module.css';
-// import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 import getPlaces from '../../API/getPlaces';
 
-// AutoCompleteInput.propTypes = {
-//   handleManualInputChange: PropTypes.func.isRequired,
-//   setAddress: PropTypes.func.isRequired,
-//   streetAndNumber: PropTypes.string.isRequired,
-// };
+interface Suggestion {
+  place_name: string;
+  center: [number, number];
+  context: { id: string; text: string }[];
+}
 
-interface AddressForm {
-  handleManualInputChange: string;
-  setAddress: string;
+interface Address {
+  streetAndNumber: string;
+  place: string;
+  region: string;
+  postcode: string;
+  country: string;
+  latitude?: string;
+  longitude?: string;
+}
+
+interface AutoCompleteInputProps {
+  handleManualInputChange: (event: ChangeEvent<HTMLInputElement>, stateProperty: keyof Address) => void;
+  setAddress: (address: Address) => void;
   streetAndNumber: string;
 }
 
-export default function AutoCompleteInput({
+const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   handleManualInputChange,
   setAddress,
   streetAndNumber,
-}) {
-  const [suggestions, setSuggestions] = useState([]);
+}) => {
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     handleManualInputChange(event, 'streetAndNumber');
     handleInputChange(event.target.value);
   };
 
-  const handleInputChange = async (query) => {
-    const suggesions = await getPlaces(query);
-    setSuggestions(suggesions);
+  const handleInputChange = async (query: string) => {
+    const suggestions = await getPlaces(query);
+    setSuggestions(suggestions);
   };
 
-  const handleSuggestionClick = (suggestion) => {
+  const handleSuggestionClick = (suggestion: Suggestion) => {
     const streetAndNumber = suggestion.place_name.split(',')[0];
     const latitude = suggestion.center[1];
     const longitude = suggestion.center[0];
 
-    const address = {
+    const address: Address = {
       streetAndNumber,
       place: '',
       region: '',
       postcode: '',
       country: '',
-      latitude,
-      longitude,
+      latitude: String(latitude),
+      longitude: String(longitude),
     };
 
     suggestion.context.forEach((element) => {
-      const identifier = element.id.split('.')[0];
-
+      const identifier = element.id.split('.')[0] as keyof Address;
       address[identifier] = element.text;
     });
 
@@ -79,4 +87,6 @@ export default function AutoCompleteInput({
       </div>
     </div>
   );
-}
+};
+
+export default AutoCompleteInput;

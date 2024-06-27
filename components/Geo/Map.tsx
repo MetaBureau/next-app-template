@@ -1,23 +1,16 @@
-// import PropTypes from 'prop-types';
-import ReactMapGl, { Marker } from 'react-map-gl';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import ReactMapGl, { Marker, ViewStateChangeEvent, MapEvent } from 'react-map-gl';
 import PointerIcon from '../../assets/pointer.svg';
 
 const TOKEN = 'pk.eyJ1IjoibWV0YWJ1cmVhdSIsImEiOiJjbHY3ZzdjbWwwOWVtMmtueDFrdTJkc2RyIn0.cxMBN9cYT8gWMD8H37adTA';
 
-// Map.propTypes = {
-//   longitude: PropTypes.number.isRequired,
-//   latitude: PropTypes.number.isRequired,
-//   updateCoordinates: PropTypes.func.isRequired,
-// };
-
 interface MapProps {
-  longitude: string;
-  latitude: string;
-  updateCoordinates: string;
+  longitude: number;
+  latitude: number;
+  updateCoordinates: (latitude: number, longitude: number) => void;
 }
 
-  export default function Map({ longitude, latitude, updateCoordinates }) {
+const Map: React.FC<MapProps> = ({ longitude, latitude, updateCoordinates }) => {
   const [viewport, setViewport] = useState({
     latitude,
     longitude,
@@ -37,9 +30,9 @@ interface MapProps {
     }));
   }, [latitude, longitude]);
 
-  const handleMarkerDrag = (event) => {
-    const latitude = event.lngLat.lat;
-    const longitude = event.lngLat.lng;
+  const handleMarkerDrag = (event: MapEvent) => {
+    const latitude = event.lngLat[1];
+    const longitude = event.lngLat[0];
 
     setMarker({ latitude, longitude });
 
@@ -52,7 +45,7 @@ interface MapProps {
         {...viewport}
         mapboxAccessToken={TOKEN}
         mapStyle="mapbox://styles/mapbox/streets-v12"
-        onMove={(event) => {
+        onMove={(event: ViewStateChangeEvent) => {
           setViewport(event.viewState);
         }}
       >
@@ -62,9 +55,11 @@ interface MapProps {
           draggable
           onDragEnd={handleMarkerDrag}
         >
-          <img className="marker" src={PointerIcon} />
+          <img className="marker" src={PointerIcon} alt="Pointer Icon" />
         </Marker>
       </ReactMapGl>
     </div>
   );
-}
+};
+
+export default Map;
