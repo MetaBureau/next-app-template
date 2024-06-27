@@ -32,7 +32,7 @@ const Geo: React.FC = () => {
     }
   };
 
-  const updateCoordinates = (latitude: string, longitude: string) => {
+  const updateCoordinates = (latitude: number, longitude: number) => {
     setAddress({ ...address, latitude, longitude });
   };
 
