@@ -17,7 +17,7 @@ interface MapProps {
   updateCoordinates: string;
 }
 
-function Map({ longitude, latitude, updateCoordinates }) {
+  export default function Map({ longitude, latitude, updateCoordinates }) {
   const [viewport, setViewport] = useState({
     latitude,
     longitude,
@@ -68,5 +68,3 @@ function Map({ longitude, latitude, updateCoordinates }) {
     </div>
   );
 }
-
-export default Map;

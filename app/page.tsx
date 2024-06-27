@@ -8,7 +8,7 @@ import { TableReviews } from '../components/TableReviews/TableReviews';
 import { HeaderSimple } from '@/components/HeaderSimple/HeaderSimple';
 import { HeaderMegaMenu } from '@/components/HeaderMegaMenu/HeaderMegaMenu';
 import { HeroImageRight } from '@/components/HeroImageRight/HeroImageRight';
-import { Geo } from '../components/Geo/Geo';
+import { Geo } from '@/components/Geo/Geo';
 
 export default function HomePage() {
   return (
