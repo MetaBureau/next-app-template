@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import React, { useState, useEffect } from 'react';
 import ReactMapGl, { Marker, ViewStateChangeEvent, MapEvent } from 'react-map-gl';
 import PointerIcon from '../../assets/pointer.svg';
@@ -5,8 +6,8 @@ import PointerIcon from '../../assets/pointer.svg';
 const TOKEN = 'pk.eyJ1IjoibWV0YWJ1cmVhdSIsImEiOiJjbHY3ZzdjbWwwOWVtMmtueDFrdTJkc2RyIn0.cxMBN9cYT8gWMD8H37adTA';
 
 interface MapProps {
-  longitude: number;
-  latitude: number;
+  longitude: string;
+  latitude: string;
   updateCoordinates: (latitude: number, longitude: number) => void;
 }
 

@@ -1,6 +1,7 @@
+/* eslint-disable react/button-has-type */
+import { ChangeEvent, FormEvent } from 'react';
 import AutoCompleteInput from './AutoCompleteInput';
 import './AddressForm.module.css';
-import { ChangeEvent, FormEvent } from 'react';
 
 interface Address {
   streetAndNumber: string;
@@ -19,6 +20,7 @@ interface AddressFormProps {
 }
 
 const AddressForm: React.FC<AddressFormProps> = ({ address, onSubmit, setAddress }) => {
+  // eslint-disable-next-line max-len
   const handleManualInputChange = (event: ChangeEvent<HTMLInputElement>, stateProperty: keyof Address) => {
     const newAddress = { ...address };
     newAddress[stateProperty] = event.target.value;
@@ -94,6 +96,6 @@ const AddressForm: React.FC<AddressFormProps> = ({ address, onSubmit, setAddress
       </div>
     </form>
   );
-}
+};
 
 export default AddressForm;

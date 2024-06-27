@@ -1,38 +1,37 @@
-import React, { useState, FormEvent } from 'react';
+import { useState } from 'react';
 import AddressForm from './AddressForm';
 import Map from './Map';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-interface Address {
+interface Geo {
   streetAndNumber: string;
   place: string;
   region: string;
   postcode: string;
   country: string;
-  latitude?: number;
-  longitude?: number;
+  latitude: string;
+  longitude: string;
 }
 
 const Geo: React.FC = () => {
-  const [address, setAddress] = useState<Address>({
+  const [address, setAddress] = useState({
     streetAndNumber: '',
     place: '',
     region: '',
     postcode: '',
     country: '',
-    latitude: 45,
-    longitude: 45,
+    latitude: '',
+    longitude: '',
   });
 
-  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     if (address.streetAndNumber) {
       console.log('Selected address:', address);
     }
   };
 
-  const updateCoordinates = (latitude: number, longitude: number) => {
+  const updateCoordinates = (latitude: string, longitude: string) => {
     setAddress({ ...address, latitude, longitude });
   };
 
@@ -52,6 +51,6 @@ const Geo: React.FC = () => {
       )}
     </div>
   );
-}
+};
 
 export default Geo;
