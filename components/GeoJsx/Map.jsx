@@ -1,8 +1,8 @@
-import "./Map.css";
-import PropTypes from "prop-types";
+import './Map.css';
+import PropTypes from 'prop-types';
 // import PointerIcon from "../assets/pointer.svg";
-import ReactMapGl, { Marker } from "react-map-gl";
-import { useState, useEffect } from "react";
+import ReactMapGl, { Marker } from 'react-map-gl';
+import { useState, useEffect } from 'react';
 
 const TOKEN = 'pk.eyJ1IjoibWV0YWJ1cmVhdSIsImEiOiJjbHY3ZzdjbWwwOWVtMmtueDFrdTJkc2RyIn0.cxMBN9cYT8gWMD8H37adTA';
 
@@ -16,7 +16,7 @@ function Map({ longitude, latitude, updateCoordinates }) {
   const [viewport, setViewport] = useState({
     latitude,
     longitude,
-    zoom: 16,
+    zoom: 14,
   });
 
   const [marker, setMarker] = useState({
@@ -54,7 +54,7 @@ function Map({ longitude, latitude, updateCoordinates }) {
         <Marker
           latitude={marker.latitude}
           longitude={marker.longitude}
-          draggable={true}
+          draggable
           onDragEnd={handleMarkerDrag}
         >
           <img className="marker" src="icons8-check-mark-30.png" />

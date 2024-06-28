@@ -1,25 +1,27 @@
+// https://aleksandarpopovic.com/Address-Search-With-React-and-Mapbox-API/
+
 // import "./App.scss";
-import AddressForm from "./AddressForm";
-import Map from "./Map";
-import "mapbox-gl/dist/mapbox-gl.css";
-import { useState } from "react";
+import AddressForm from './AddressForm';
+import Map from './Map';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import { useState } from 'react';
 
 function GeoJsx() {
   const [address, setAddress] = useState({
-    streetAndNumber: "",
-    place: "",
-    region: "",
-    postcode: "",
-    country: "",
-    latitude: "",
-    longitude: "",
+    streetAndNumber: '',
+    place: '',
+    region: '',
+    postcode: '',
+    country: '',
+    latitude: '',
+    longitude: '',
   });
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
     if (address.streetAndNumber) {
-      console.log("Selected address:", address);
+      console.log('Selected address:', address);
     }
   };
 

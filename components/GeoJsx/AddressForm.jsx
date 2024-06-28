@@ -1,8 +1,7 @@
-import "./AddressForm.module.css";
-import AutoCompleteInput from "./AutoCompleteInput";
-import PropTypes from "prop-types";
-import { Input } from '@mantine/core';
-import { Button } from '@mantine/core';
+import './AddressForm.module.css';
+import PropTypes from 'prop-types';
+import { Input, Button } from '@mantine/core';
+import AutoCompleteInput from './AutoCompleteInput';
 
 AddressForm.propTypes = {
   address: PropTypes.object.isRequired,
@@ -20,67 +19,72 @@ export default function AddressForm({ address, onSubmit, setAddress }) {
 
   return (
     <form className="form" onSubmit={onSubmit}>
-      <label htmlFor="address">Address</label>
+      {/* <label htmlFor="address">Address</label> */}
       <AutoCompleteInput
         setAddress={setAddress}
         handleManualInputChange={handleManualInputChange}
         streetAndNumber={address.streetAndNumber}
       />
 
-      <label htmlFor="city">City</label>
+      <Input.Wrapper label="City" description="City" error="" size="md">
+        <Input
+          type="text"
+          id="city"
+          placeholder="City"
+          value={address.place}
+          onChange={(event) => handleManualInputChange(event, 'place')}
+        />
+      </Input.Wrapper>
 
-      <Input
-        type="text"
-        id="city"
-        placeholder="City"
-        value={address.place}
-        onChange={(event) => handleManualInputChange(event, "place")}
-      />
-
-      <label htmlFor="state">State/Province/Region</label>
+      <Input.Wrapper label="State/Province/Region" description="State" error="" size="md">
       <Input
         type="text"
         id="state"
         placeholder="State/Province/Region"
         value={address.region}
-        onChange={(event) => handleManualInputChange(event, "region")}
+        onChange={(event) => handleManualInputChange(event, 'region')}
       />
+      </Input.Wrapper>
 
-      <label htmlFor="postcode">Postcode</label>
+      <Input.Wrapper label="Postcode" description="Postcode" error="" size="md">
       <Input
         type="text"
         id="postcode"
         placeholder="Postcode"
         value={address.postcode}
-        onChange={(event) => handleManualInputChange(event, "postcode")}
+        onChange={(event) => handleManualInputChange(event, 'postcode')}
       />
+      </Input.Wrapper>
 
-      <label htmlFor="country">Country</label>
+      <Input.Wrapper label="Country" description="Country" error="" size="md">
       <Input
         type="text"
         id="country"
         placeholder="Country"
         value={address.country}
-        onChange={(event) => handleManualInputChange(event, "country")}
+        onChange={(event) => handleManualInputChange(event, 'country')}
       />
+      </Input.Wrapper>
 
-      <label htmlFor="latitude">Latitude</label>
+      <Input.Wrapper label="Latitude" description="Latitude" error="" size="md">
       <Input
         type="text"
         id="latitude"
         placeholder="latitude"
         value={address.latitude}
-        onChange={(event) => handleManualInputChange(event, "latitude")}
+        onChange={(event) => handleManualInputChange(event, 'latitude')}
       />
+      </Input.Wrapper>
 
-      <label htmlFor="longitude">Longitude</label>
+      <Input.Wrapper label="Longitude" description="Longitude" error="" size="md">
       <Input
         type="text"
         id="longitude"
         placeholder="longitude"
         value={address.longitude}
-        onChange={(event) => handleManualInputChange(event, "longitude")}
+        onChange={(event) => handleManualInputChange(event, 'longitude')}
       />
+      </Input.Wrapper>
 
       <div className="buttons">
         <Button type="submit" className="confirm-button">
@@ -91,13 +95,13 @@ export default function AddressForm({ address, onSubmit, setAddress }) {
           className="reset-button"
           onClick={() =>
             setAddress({
-              streetAndNumber: "",
-              place: "",
-              region: "",
-              postcode: "",
-              country: "",
-              latitude: "",
-              longitude: "",
+              streetAndNumber: '',
+              place: '',
+              region: '',
+              postcode: '',
+              country: '',
+              latitude: '',
+              longitude: '',
             })
           }
         >

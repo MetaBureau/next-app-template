@@ -7,7 +7,10 @@ export default async function getPlaces(query) {
       {
         params: {
           access_token: 'pk.eyJ1IjoibWV0YWJ1cmVhdSIsImEiOiJjbHY3ZzdjbWwwOWVtMmtueDFrdTJkc2RyIn0.cxMBN9cYT8gWMD8H37adTA',
+          country: 'AU',
+          types: 'address'
         },
+
       }
     );
 
