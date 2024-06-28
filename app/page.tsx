@@ -8,7 +8,8 @@ import { TableReviews } from '../components/TableReviews/TableReviews';
 import { HeaderSimple } from '@/components/HeaderSimple/HeaderSimple';
 import { HeaderMegaMenu } from '@/components/HeaderMegaMenu/HeaderMegaMenu';
 import { HeroImageRight } from '@/components/HeroImageRight/HeroImageRight';
-import Geo from '@/components/Geo/Geo';
+// import Geo from '@/components/Geo/Geo';
+import GeoJsx from '@/components/GeoJsx/GeoJsx';
 
 export default function HomePage() {
   return (
@@ -21,7 +22,8 @@ export default function HomePage() {
       <ColorSchemeToggle />
       <ImageActionBanner />
       <TableReviews />
-      <Geo />
+      {/* <Geo /> */}
+      <GeoJsx />
     </>
   );
 }

@@ -1,27 +1,18 @@
-import AutoCompleteInput from './AutoCompleteInput';
-import './AddressForm.module.css';
-import { ChangeEvent, FormEvent } from 'react';
+import "./AddressForm.module.css";
+import AutoCompleteInput from "./AutoCompleteInput";
+import PropTypes from "prop-types";
 
-interface Address {
-  streetAndNumber: string;
-  place: string;
-  region: string;
-  postcode: string;
-  country: string;
-  latitude?: string;
-  longitude?: string;
-}
+AddressForm.propTypes = {
+  address: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  setAddress: PropTypes.func.isRequired,
+};
 
-interface AddressFormProps {
-  address: Address;
-  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
-  setAddress: (address: Address) => void;
-}
-
-const AddressForm: React.FC<AddressFormProps> = ({ address, onSubmit, setAddress }) => {
-  const handleManualInputChange = (event: ChangeEvent<HTMLInputElement>, stateProperty: keyof Address) => {
+export default function AddressForm({ address, onSubmit, setAddress }) {
+  const handleManualInputChange = (event, stateProperty) => {
     const newAddress = { ...address };
     newAddress[stateProperty] = event.target.value;
+
     setAddress(newAddress);
   };
 
@@ -40,7 +31,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ address, onSubmit, setAddress
         id="city"
         placeholder="City"
         value={address.place}
-        onChange={(event) => handleManualInputChange(event, 'place')}
+        onChange={(event) => handleManualInputChange(event, "place")}
       />
 
       <label htmlFor="state">State/Province/Region</label>
@@ -49,7 +40,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ address, onSubmit, setAddress
         id="state"
         placeholder="State/Province/Region"
         value={address.region}
-        onChange={(event) => handleManualInputChange(event, 'region')}
+        onChange={(event) => handleManualInputChange(event, "region")}
       />
 
       <label htmlFor="postcode">Postcode</label>
@@ -58,7 +49,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ address, onSubmit, setAddress
         id="postcode"
         placeholder="Postcode"
         value={address.postcode}
-        onChange={(event) => handleManualInputChange(event, 'postcode')}
+        onChange={(event) => handleManualInputChange(event, "postcode")}
       />
 
       <label htmlFor="country">Country</label>
@@ -67,7 +58,25 @@ const AddressForm: React.FC<AddressFormProps> = ({ address, onSubmit, setAddress
         id="country"
         placeholder="Country"
         value={address.country}
-        onChange={(event) => handleManualInputChange(event, 'country')}
+        onChange={(event) => handleManualInputChange(event, "country")}
+      />
+
+      <label htmlFor="latitude">Latitude</label>
+      <input
+        type="text"
+        id="latitude"
+        placeholder="latitude"
+        value={address.latitude}
+        onChange={(event) => handleManualInputChange(event, "latitude")}
+      />
+
+      <label htmlFor="longitude">Longitude</label>
+      <input
+        type="text"
+        id="longitude"
+        placeholder="longitude"
+        value={address.longitude}
+        onChange={(event) => handleManualInputChange(event, "longitude")}
       />
 
       <div className="buttons">
@@ -79,13 +88,13 @@ const AddressForm: React.FC<AddressFormProps> = ({ address, onSubmit, setAddress
           className="reset-button"
           onClick={() =>
             setAddress({
-              streetAndNumber: '',
-              place: '',
-              region: '',
-              postcode: '',
-              country: '',
-              latitude: '',
-              longitude: '',
+              streetAndNumber: "",
+              place: "",
+              region: "",
+              postcode: "",
+              country: "",
+              latitude: "",
+              longitude: "",
             })
           }
         >
@@ -95,5 +104,3 @@ const AddressForm: React.FC<AddressFormProps> = ({ address, onSubmit, setAddress
     </form>
   );
 }
-
-export default AddressForm;

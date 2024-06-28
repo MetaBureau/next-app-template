@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/no-shadow */
 import './AutoCompleteInput.module.css';
 import { useState, ChangeEvent } from 'react';
 import getPlaces from '../../API/getPlaces';
@@ -82,7 +79,6 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
         />
         <ul className="addressSuggestions">
           {suggestions?.map((suggestion, index) => (
-            // eslint-disable-next-line jsx-a11y/click-events-have-key-events
             <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
               {suggestion.place_name}
             </li>

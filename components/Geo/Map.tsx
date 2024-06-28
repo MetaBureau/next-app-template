@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import React, { useState, useEffect } from 'react';
 import ReactMapGl, { Marker, ViewStateChangeEvent, MapEvent } from 'react-map-gl';
-import PointerIcon from '../../assets/pointer.svg';
+// import PointerIcon from '/pointer.svg';
+import classes from './Map.module.css';
 
 const TOKEN = 'pk.eyJ1IjoibWV0YWJ1cmVhdSIsImEiOiJjbHY3ZzdjbWwwOWVtMmtueDFrdTJkc2RyIn0.cxMBN9cYT8gWMD8H37adTA';
 
 interface MapProps {
-  longitude: string;
-  latitude: string;
+  longitude: number;
+  latitude: number;
   updateCoordinates: (latitude: number, longitude: number) => void;
 }
 
@@ -41,8 +42,8 @@ const Map: React.FC<MapProps> = ({ longitude, latitude, updateCoordinates }) => 
   };
 
   return (
-    <div className="map">
-      <ReactMapGl
+    <div className={classes.map} id="fuckmap">
+ <ReactMapGl
         {...viewport}
         mapboxAccessToken={TOKEN}
         mapStyle="mapbox://styles/mapbox/streets-v12"
@@ -54,9 +55,9 @@ const Map: React.FC<MapProps> = ({ longitude, latitude, updateCoordinates }) => 
           latitude={marker.latitude}
           longitude={marker.longitude}
           draggable
-          onDragEnd={handleMarkerDrag}
+          // onDragEnd={handleMarkerDrag}
         >
-          <img className="marker" src={PointerIcon} alt="Pointer Icon" />
+          <img className="marker" src="icons8-check-mark-30.png" alt="Pointer Icon" />
         </Marker>
       </ReactMapGl>
     </div>
