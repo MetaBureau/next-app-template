@@ -23,7 +23,7 @@ export default function HomePage() {
       <ImageActionBanner />
       <TableReviews />
       {/* <Geo /> */}
-      <GeoJsx />
+      <GeoJsx thing="Look up your address please" />
     </>
   );
 }
