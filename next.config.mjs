@@ -9,9 +9,9 @@ export default withBundleAnalyzer({
   eslint: {
     ignoreDuringBuilds: true,
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  // typescript: {
+  //   ignoreBuildErrors: true,
+  // },
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
   },
