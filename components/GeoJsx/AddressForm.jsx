@@ -1,6 +1,8 @@
 import "./AddressForm.module.css";
 import AutoCompleteInput from "./AutoCompleteInput";
 import PropTypes from "prop-types";
+import { Input } from '@mantine/core';
+import { Button } from '@mantine/core';
 
 AddressForm.propTypes = {
   address: PropTypes.object.isRequired,
@@ -26,7 +28,8 @@ export default function AddressForm({ address, onSubmit, setAddress }) {
       />
 
       <label htmlFor="city">City</label>
-      <input
+
+      <Input
         type="text"
         id="city"
         placeholder="City"
@@ -35,7 +38,7 @@ export default function AddressForm({ address, onSubmit, setAddress }) {
       />
 
       <label htmlFor="state">State/Province/Region</label>
-      <input
+      <Input
         type="text"
         id="state"
         placeholder="State/Province/Region"
@@ -44,7 +47,7 @@ export default function AddressForm({ address, onSubmit, setAddress }) {
       />
 
       <label htmlFor="postcode">Postcode</label>
-      <input
+      <Input
         type="text"
         id="postcode"
         placeholder="Postcode"
@@ -53,7 +56,7 @@ export default function AddressForm({ address, onSubmit, setAddress }) {
       />
 
       <label htmlFor="country">Country</label>
-      <input
+      <Input
         type="text"
         id="country"
         placeholder="Country"
@@ -62,7 +65,7 @@ export default function AddressForm({ address, onSubmit, setAddress }) {
       />
 
       <label htmlFor="latitude">Latitude</label>
-      <input
+      <Input
         type="text"
         id="latitude"
         placeholder="latitude"
@@ -71,7 +74,7 @@ export default function AddressForm({ address, onSubmit, setAddress }) {
       />
 
       <label htmlFor="longitude">Longitude</label>
-      <input
+      <Input
         type="text"
         id="longitude"
         placeholder="longitude"
@@ -80,10 +83,10 @@ export default function AddressForm({ address, onSubmit, setAddress }) {
       />
 
       <div className="buttons">
-        <button type="submit" className="confirm-button">
+        <Button type="submit" className="confirm-button">
           Confirm
-        </button>
-        <button
+        </Button>
+        <Button
           type="reset"
           className="reset-button"
           onClick={() =>
@@ -99,7 +102,7 @@ export default function AddressForm({ address, onSubmit, setAddress }) {
           }
         >
           Reset
-        </button>
+        </Button>
       </div>
     </form>
   );

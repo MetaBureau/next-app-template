@@ -2,6 +2,7 @@ import "./AutoCompleteInput.module.css";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import getPlaces from "../../API/getPlaces";
+import { Input } from '@mantine/core';
 
 AutoCompleteInput.propTypes = {
   handleManualInputChange: PropTypes.func.isRequired,
@@ -56,7 +57,7 @@ export default function AutoCompleteInput({
   return (
     <div>
       <div className="autoCompleteInputContainer">
-        <input
+        <Input
           id="address"
           type="text"
           placeholder="Address"
